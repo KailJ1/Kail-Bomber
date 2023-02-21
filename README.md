@@ -11,12 +11,12 @@
   + `pkg install python -y`
   + `pip install --upgrade pip`
   + `git clone https://github.com/KailJ1/Kail-Bomber.git`
-  + `cd ORION-Bomber`
+  + `cd Kail-Bomber`
   + `pip install -r requirements.txt`
   + `python main.py`
 + #### **Перезапуск (Android - Termux)**
   + `cd`
-  + `cd ORION-Bomber`
+  + `cd Kail-Bomber`
   + `python main.py`
 ___
 + #### **Linux**
@@ -26,7 +26,7 @@ ___
   + `sudo apt install python`
   + `pip install --upgrade pip`
   + `git clone https://github.com/KailJ1/Kail-Bomber.git`
-  + `cd ORION-Bomber`
+  + `cd Kail-Bomber`
   + `pip install -r requirements.txt`
   + `python main.py`
 ___
