@@ -25,7 +25,7 @@ ___
   + `sudo install git`
   + `sudo apt install python`
   + `pip install --upgrade pip`
-  + `git clone https://github.com/Lucky1376/ORION-Bomber`
+  + `git clone https://github.com/KailJ1/Kail-Bomber.git`
   + `cd ORION-Bomber`
   + `pip install -r requirements.txt`
   + `python main.py`
