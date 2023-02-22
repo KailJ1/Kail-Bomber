@@ -203,25 +203,20 @@ def number_ckeck(numb):
 
 def start_input():
 	country_code = {"1": "+7",
-					"2": "+380",
-							"3": "+375"}
+					"2": "+375"}
 	country_code_2 = {"1": "ru",
-					  "2": "by"
-							"3": "ua"}
+					  "2": "by"}
 	clear()
 	while True:
 		print(colored("[99] Отмена", "red"))
 		print("")
 		print(colored("[1]", "red"), colored("Россия +7", "cyan"))
-		print(colored("[2]", "red"), colored("Украина +380", "cyan"))
-		print(colored("[3]", "red"), colored("Беларусь +375", "cyan"))
+		print(colored("[2]", "red"), colored("Беларусь +375", "cyan"))
 		print("")
 		ct = input(colored("Выберите страну: ", "green"))
 		if ct == "1":
 			break
 		elif ct == "2":
-			break
-		elif ct == "3":
 			break
 		elif ct == "99":
 			return 0, 0, 0
@@ -404,7 +399,40 @@ def force_update():
 			how = input(colored("~# ", "red"))
 			if how == "1":
 				clear()
-				if platform == "linux" or platform == "linux2":
+				if platform == "linux":
+					print(colored("Устанавливаю архив...", "green"))
+					os.system("rm -rf Kail-Bomber")
+					
+					result = r.get("https://github.com/KailJ1/Kail-Bomber/archive/refs/heads/master.zip")
+					
+					a = open("Kail-Bomber.zip", "wb")
+					a.write(result.content)
+					a.close()
+					
+					print(colored("Распаковка архива...", "green"))
+
+					fantasy_zip = zipfile.ZipFile("Kail-Bomber.zip")
+					fantasy_zip.extractall("Kail-Bomber")
+					fantasy_zip.close()
+					os.system("rm -rf Kail-Bomber.zip")
+
+					os.chdir("Kail-Bomber")
+					os.chdir("Kail-Bomber-master")
+					 
+					get_files = os.listdir(os.getcwd())
+					 
+					for g in get_files:
+						shutil.move(g, "/Kail-Bomber")
+					os.chdir("/Kail-Bomber")
+					os.system("rm -rf Kail-Bomber-master")
+
+					print(colored("Обновление прошло успешно, запускаю Kail-Bomber...", "green"))
+					time.sleep(1.5)
+
+					os.system("pip install -r requirements.txt")
+					os.system("python main.py")
+					exit()
+				elif platform == "linux2":
 					print(colored("Устанавливаю архив...", "green"))
 					os.chdir("/data/data/com.termux/files/home")
 					os.system("rm -rf Kail-Bomber")
