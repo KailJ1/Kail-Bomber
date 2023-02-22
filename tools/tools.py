@@ -452,7 +452,7 @@ def CFU():
 						
 						result = r.get("https://github.com/KailJ1/Kail-Bomber/archive/refs/heads/master.zip")
 						
-						a = open("ORION-Bomber.zip", "wb")
+						a = open("Kail-Bomber.zip", "wb")
 						a.write(result.content)
 						a.close()
 						
