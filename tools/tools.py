@@ -303,115 +303,102 @@ def check_moderator():
 		else:
 			anim_text("Пароль неверный...", speed=0.030, color="red")
 			time.sleep(1)
-def CFU():
-	in_d = False
-	# Checking the Internet
-	try:
-		r.get("https://google.com", timeout=5)
-		in_d = True
-	except:
-		clear()
-		print(colored("[!]", "red"), colored("Ваше устройство не подключено к интернету или интернет слишком слабый!", "magenta"))
-		exit()
-	clear()
-	if in_d:
-		anim_text("Проверяем обновление...", speed=0.02, color="green")
-		# ├ └
-
-		result = r.get("https://raw.githubusercontent.com/Kail-Bomber/master/tools/version.txt")
+            
+def force_update():
+	result_m = check_moderator()
+	if result_m == "return":
+		return
+	elif result_m == True:
+		result = r.get("https://raw.githubusercontent.com/KailJ1/Kail-Bomber/blob/master/tools/version.txt")
 		last_ver = result.content.decode("utf-8")
 
-		update_list = r.get("https://raw.githubusercontent.com/KailJ1/Kail-Bomber/master/tools/update_list.txt")
+		update_list = r.get("https://raw.githubusercontent.com/KailJ1/Kail-Bomber/blob/master/tools/update_list.txt")
 		update_list = update_list.content.decode("utf-8").split("\n")
 
-		a = open("tools/version.txt", "r")
-		current_ver = a.read()
-		a.close()
-		if last_ver != current_ver:
-			clear()
-			print(colored("[!]", "magenta"), colored("Найдено новое обновление V", "green")+colored(last_ver, "cyan")+colored("!", "green"))
-			print("")
-			k = 0
-			print(colored("Что нового?", "green"))
-			for par in update_list:
-				if len(update_list)-1 == k:
-					print("└"+colored(par, "cyan"))
+		clear()
+		print(colored("[!]", "magenta"), colored("Найдено новое обновление V", "green")+colored(last_ver, "cyan")+colored("!", "green"))
+		print("")
+		k = 0
+		print(colored("Что нового?", "green"))
+		for par in update_list:
+			if len(update_list)-1 == k:
+				print("└"+colored(par, "cyan"))
+			else:
+				print("├"+colored(par, "cyan"))
+			k+=1
+		print("")
+		print(colored("Желаете ли вы обновиться до актуальной версии?", "yellow"))
+		print("")
+		print(colored("[1]", "red"), colored("Да", "green"))
+		print(colored("[2]", "red"), colored("Нет", "red"))
+		print("")
+		while True:
+			how = input(colored("~# ", "red"))
+			if how == "1":
+				clear()
+				if platform == "linux" or platform == "linux2":
+					print(colored("Устанавливаю архив...", "green"))
+					os.chdir("/data/data/com.termux/files/home")
+					os.system("rm -rf Kail-Bomber")
+					
+					result = r.get("https://github.com/KailJ1/Kail-Bomber/archive/refs/heads/master.zip")
+					
+					a = open("Kail-Bomber.zip", "wb")
+					a.write(result.content)
+					a.close()
+					
+					print(colored("Распаковка архива...", "green"))
+
+					fantasy_zip = zipfile.ZipFile("Kail-Bomber.zip")
+					fantasy_zip.extractall("Kail-Bomber")
+					fantasy_zip.close()
+					os.system("rm -rf Kail-Bomber.zip")
+
+					os.chdir("Kail-Bomber")
+					os.chdir("Kail-Bomber-master")
+					 
+					get_files = os.listdir(os.getcwd())
+					 
+					for g in get_files:
+						shutil.move(g, "/data/data/com.termux/files/home/Kail-Bomber")
+					os.chdir("/data/data/com.termux/files/home/Kail-Bomber")
+					os.system("rm -rf Kail-Bomber-master")
+
+					print(colored("Обновление прошло успешно, запускаю Kail-Bomber...", "green"))
+					time.sleep(1.5)
+
+					os.system("pip install -r requirements.txt")
+					os.system("python main.py")
+					exit()
+				elif platform == "win32":
+					clear()
+					os.startfile(os.getcwd()+"/updaters/windows.exe")
+					exit()
 				else:
-					print("├"+colored(par, "cyan"))
-				k+=1
-			print("")
-			print(colored("Желаете ли вы обновиться до актуальной версии?", "yellow"))
-			print("")
-			print(colored("[1]", "red"), colored("Да", "green"))
-			print(colored("[2]", "red"), colored("Нет", "red"))
-			print("")
-			while True:
-				how = input(colored("~# ", "red"))
-				if how == "1":
-					clear()
-					if platform == "linux" or platform == "linux2":
-						print(colored("Устанавливаю архив...", "green"))
-						os.chdir("/data/data/com.termux/files/home")
-						os.system("rm -rf ORION-Bomber")
-						
-						result = r.get("https://github.com/KailJ1/Kail-Bomber/archive/refs/heads/master.zip")
-						
-						a = open("ORION-Bomber.zip", "wb")
-						a.write(result.content)
-						a.close()
-						
-						print(colored("Распаковка архива...", "green"))
-
-						fantasy_zip = zipfile.ZipFile("Kail-Bomber.zip")
-						fantasy_zip.extractall("Kail-Bomber")
-						fantasy_zip.close()
-						os.system("rm -rf Kail-Bomber.zip")
-
-						os.chdir("Kail-Bomber")
-						os.chdir("Kail-Bomber-master")
-						 
-						get_files = os.listdir(os.getcwd())
-						 
-						for g in get_files:
-							shutil.move(g, "/data/data/com.termux/files/home/Kail-Bomber")
-						os.chdir("/data/data/com.termux/files/home/Kail-Bomber")
-						os.system("rm -rf Kail-Bomber-master")
-
-						print(colored("Обновление прошло успешно, запускаю Kail-Bomber...", "green"))
-						time.sleep(1.5)
-
-						os.system("pip install -r requirements.txt")
-						os.system("python main.py")
-						exit()
-					elif platform == "win32":
-						clear()
-						os.startfile(os.getcwd()+"/updaters/windows.exe")
-						exit()
-					else:
-						print(colored("[!]", "red"), colored("Наша программа пока не может установить обновление на вашу операционную ситему, вам придется скачать обновление вручную. В будущем мы постораемся сделать автообновление под вашу ОС!", "magenta"))
-						print("\nНажмите Enter чтобы запустить программу на старой версии или введите 1 чтобы я открыл ссылку на репозиторий с актуальной версией")
-						if input() == "1":
-							result_open = webbrowser.open("https://github.com/KailJ1/Kail-Bomber", new=0, autoraise=True)
-							if not(result_open):
-								clear()
-								print(colored("Мне не удалось открыть ссылку на актуальную версию на вашем устройстве ;(", "red"))
-								print("\n"+"Попробуйте открыть ее сами! "+colored("https://github.com/KailJ1/Kail-Bomber", "green"))
-								print("\nНажмите Enter чтобы запустить программу на старой версии или введите 1 чтобы выйти")
-								if input() == "1":
-									exit()
-								else:
-									return
-							else:
-								clear()
-								print(colored("Скачивайте обновление!", "green"))
+					print(colored("[!]", "red"), colored("Наша программа пока не может установить обновление на вашу операционную ситему, вам придется скачать обновление вручную. В будущем мы постораемся сделать автообновление под вашу ОС!", "magenta"))
+					print("\nНажмите Enter чтобы запустить программу на старой версии или введите 1 чтобы я открыл ссылку на репозиторий с актуальной версией")
+					if input() == "1":
+						result_open = webbrowser.open("https://github.com/KailJ1/Kail-Bomber", new=0, autoraise=True)
+						if not(result_open):
+							clear()
+							print(colored("Мне не удалось открыть ссылку на актуальную версию на вашем устройстве ;(", "red"))
+							print("\n"+"Попробуйте открыть ее сами! "+colored("https://github.com/KailJ1/Kail-Bomber", "green"))
+							print("\nНажмите Enter чтобы запустить программу на старой версии или введите 1 чтобы выйти")
+							if input() == "1":
 								exit()
+							else:
+								return
 						else:
-							return
-				elif how == "2":
-					clear()
-					break
-		else:
-			clear()
+							clear()
+							print(colored("Скачивайте обновление!", "green"))
+							exit()
+					else:
+						return
+			elif how == "2":
+				clear()
+				break
+
+
 
 class Logs:
 	def __init__(self):
