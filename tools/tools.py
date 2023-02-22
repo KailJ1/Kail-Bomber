@@ -127,7 +127,51 @@ def banner():
 
 def banner_tools():
 	print(colored("[1]", "red"), colored("Начать спам", "green"))
+	print(colored("[2]", "red"), colored("Поддержать разработчиков!    <---", "green"))
+	print(colored("\n[99]", "red"), colored("Информация", "cyan"))
 	print(colored("\n[0] Выход", "red"))
+
+def donate():
+	print("")
+	print(colored("Ваша поддержа еще больше мотивирует нас выпускать обновления!", "green"))
+	print("")
+	print(colored("QIWI", "yellow"))
+	print("├"+colored("https://qiwi.com/n/KAILJ", "cyan"), colored("Перевод по никнейму", "green"))
+	print("")
+	print(colored("Сбербанк", "green"))
+	print("└"+colored("4276 4403 8969 7928", "cyan"), colored("Visa", "red"))
+	print("")
+	print(colored("Тинькофф", "blue"))
+	print("└"+colored("2200 7004 9421 5568", "cyan"), colored("MIR", "green"))
+	print("\nНажмите Enter чтобы вернуться назад")
+	input()
+
+def inst_logs():
+	# Checking File System Access
+	try:
+		if platform == "linux" or platform == "linux2":
+			shutil.copyfile('tools/logs.txt', '/storage/emulated/0/Download/logs.txt')
+			shutil.copyfile('tools/error_logs.txt', '/storage/emulated/0/Download/error_logs.txt')
+			print(colored("Файлы", "green"), colored("logs.txt error_logs.txt", "cyan"), colored("были сохранены в папку Download на вашем устройстве", "green"))
+			print(colored("Пожалуйста отправьте поочередно эти 2 файла в наш чат телеграм", "green"), colored("https://t.me/Kail_J1", "cyan"))
+			print("")
+			print("\nНажмите Enter чтобы вернуться назад")
+			input()
+		elif platform == "win32" or platform == "darwin":
+			print("")
+			print(colored("Пожалуйста отправьте в наш чат телеграм", "green"), colored("https://t.me/Kail_J1", "cyan"), colored("поочередно файлы", "green"), colored("logs.txt error_logs.txt", "cyan"), colored("из папки", "green"), colored("tools", "cyan"))
+			print("")
+			print("\nНажмите Enter чтобы вернуться назад")
+			input()
+	except:
+		print("")
+		print(colored("Мы не смогли переместить файлы в нужную директорию", "yellow"))
+		print(colored("Возможно у вас для Термукса в настройках разрешения приложению не доступны Файлы и медиаконтент", "yellow"))
+		print(colored("Пожалуйста разрешите Термуксу в настройках все нужные разрешения и повторите попытку"))
+		print(colored("За помощью по данному вопросу пишите в наш чат телеграм"), colored("https://t.me/Kail_J1", "cyan"))
+		print("")
+		print("\nНажмите Enter чтобы вернуться назад")
+		input()
 
 def clear_logs():
 	with open("tools/logs.txt", "w"):
@@ -136,6 +180,12 @@ def clear_logs():
 		pass
 	print("")
 	print(colored("Логи успешно были очищены", "green"))
+	print("\nНажмите Enter чтобы вернуться назад")
+	input()
+
+def banner_info():
+	print(colored("\nТелеграм", "cyan"))
+	print("├"+colored("Kail J", "green")+":", colored("https://t.me/Kail_J1", "cyan"))
 	print("\nНажмите Enter чтобы вернуться назад")
 	input()
 
@@ -213,7 +263,7 @@ def start_input():
 			print(colored("[99] Отмена", "red"))
 			print()
 			print(colored("[1]", "red"), colored("Общедоступный прокси", "yellow"))
-			print("└"+colored("Общедоступный прокси", "cyan"))
+			print("└"+colored("Общедоступный прокси используют все пользователи", "cyan"))
 			print()
 			print(colored("[2]", "red"), colored("Свой прокси", "green"))
 			print("└"+colored("Ваш прокси обязательно должен иметь протокол HTTP или HTTPS с поддержкой ipv4 и страну вашего номера", "cyan"))
@@ -278,6 +328,19 @@ def ICC():
 		print(colored("[!]", "red"), colored("Ваше устройство не подключено к интернету или интернет слишком слабый!", "magenta"))
 		exit()
 
+def telebot():
+	if platform in ["darwin", "win32"]:
+		print(colored("Открываю ссылку!", "green"))
+		webbrowser.open("https://t.me/Kail_J1", new=0, autoraise=True)
+		print("\nНажмите Enter чтобы вернуть назад")
+		input()
+	else:
+		print()
+		print(colored(" Попробуй данный Sms Bomber в новом", "yellow"), colored("Telegram", "cyan"), colored("Боте", "green")+colored("!", "yellow"))
+		print(colored("\n         ---> ", "magenta"), colored("Скоро будет", "cyan"), colored(" <---", "magenta"))
+		print("\n\nНажмите Enter чтобы вернуть назад")
+		input()
+
 def check_moderator():
 	clear()
 	anim_text("!WARNING!", speed=0.085, color="red")
@@ -296,23 +359,23 @@ def check_moderator():
 			password = input(colored("~# ", "magenta"))
 		except KeyboardInterrupt:
 			return "return"
-		if password == "veRFctta87":
+		if password == "127127000Dd":
 			return True
 		elif password == "0":
 			return "return"
 		else:
 			anim_text("Пароль неверный...", speed=0.030, color="red")
 			time.sleep(1)
-            
+
 def force_update():
 	result_m = check_moderator()
 	if result_m == "return":
 		return
 	elif result_m == True:
-		result = r.get("https://raw.githubusercontent.com/KailJ1/Kail-Bomber/blob/master/tools/version.txt")
+		result = r.get("https://raw.githubusercontent.com/KailJ1/Kail-Bomber/master/tools/version.txt")
 		last_ver = result.content.decode("utf-8")
 
-		update_list = r.get("https://raw.githubusercontent.com/KailJ1/Kail-Bomber/blob/master/tools/update_list.txt")
+		update_list = r.get("https://raw.githubusercontent.com/KailJ1/Kail-Bomber/master/tools/update_list.txt")
 		update_list = update_list.content.decode("utf-8").split("\n")
 
 		clear()
@@ -399,6 +462,7 @@ def force_update():
 				break
 
 
+
 def CFU():
 	in_d = False
 	# Checking the Internet
@@ -458,7 +522,7 @@ def CFU():
 						
 						print(colored("Распаковка архива...", "green"))
 
-						fantasy_zip = zipfile.ZipFile("Kail-Bomber")
+						fantasy_zip = zipfile.ZipFile("Kail-Bomber.zip")
 						fantasy_zip.extractall("Kail-Bomber")
 						fantasy_zip.close()
 						os.system("rm -rf Kail-Bomber.zip")
@@ -508,7 +572,6 @@ def CFU():
 					break
 		else:
 			clear()
-
 
 class Logs:
 	def __init__(self):
@@ -692,6 +755,14 @@ def start(number, country, proxy_=None):
 	print()
 
 
+	if platform == "win32":
+		if random.randint(1, 2) == 2:
+			print(colored("Подпишитесь на наш", "green"), colored("Телеграм!", "cyan"))
+			print(colored("Открываю ссылку...\n", "yellow"))
+			webbrowser.open("https://t.me/Kail_J1", new=0, autoraise=True)
+	else:
+		print(colored("Подпишитесь на наш", "green"), colored("Телеграм!", "cyan"), colored("t.me/Скоро будет", "red"))
+		print()
 		
 	# Number formats
 	number = FormattingNumber(number, country)
