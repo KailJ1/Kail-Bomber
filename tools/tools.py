@@ -108,7 +108,7 @@ def banner():
 
      █░▄▀ ▄▀▄ ▀ █░░     █▀▄ ▄▀▄ █▄░▄█ █▀▄ █▀▀ █▀▀▄ 
      █▀▄░ █▀█ █ █░▄     █▀█ █░█ █░█░█ █▀█ █▀▀ █▐█▀ 
-     ▀░▀▀ ▀░▀ ▀ ▀▀▀     ▀▀░ ░▀░ ▀░░░▀ ▀▀░ ▀▀▀ 11▀░▀▀ """, "red")
+     ▀░▀▀ ▀░▀ ▀ ▀▀▀     ▀▀░ ░▀░ ▀░░░▀ ▀▀░ ▀▀▀ ▀░▀▀ """, "red")
 
 	pred_info = " "*24+colored("Сервисы", "green")+"\n"
 	pred_info_ru = " "*17+colored("Россия ", "blue")+colored(ru_s, "green")+"   "
@@ -127,7 +127,7 @@ def banner():
 
 def banner_tools():
 	print(colored("[1]", "red"), colored("Начать спам", "green"))
-	print(colored("[2]", "red"), colored("Поддержать разработчиков!    <---", "green"))
+	print(colored("[2]", "red"), colored("Поддержать разработчика!    <---", "green"))
 	print(colored("\n[99]", "red"), colored("Информация", "cyan"))
 	print(colored("\n[0] Выход", "red"))
 
