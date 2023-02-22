@@ -106,7 +106,7 @@ def banner():
 
 	banner = colored("""
 
-     █░▄▀ ▄▀▄ ▀ █░░     █▀▄ ▄▀▄ █▄░▄█ █▀11▄ █▀▀ █▀▀▄ 
+     █░▄▀ ▄▀▄ ▀ █░░     █▀▄ ▄▀▄ █▄░▄█ █▀▄ █▀▀ █▀▀▄ 
      █▀▄░ █▀█ █ █░▄     █▀█ █░█ █░█░█ █▀█ █▀▀ █▐█▀ 
      ▀░▀▀ ▀░▀ ▀ ▀▀▀     ▀▀░ ░▀░ ▀░░░▀ ▀▀░ ▀▀▀ ▀░▀▀ """, "red")
 
@@ -130,6 +130,7 @@ def banner_tools():
 	print(colored("[2]", "red"), colored("Поддержать разработчика!    <---", "green"))
 	print(colored("\n[99]", "red"), colored("Информация", "cyan"))
 	print(colored("\n[0] Выход", "red"))
+        print(colored("\n[0] Выход", "red"))
 
 def donate():
 	print("")
