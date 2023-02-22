@@ -202,16 +202,18 @@ def number_ckeck(numb):
 		return False
 
 def start_input():
-	country_code = {"1": "+375",
-					"2": "+7"}
+	country_code = {"1": "+7",
+					"2": "+380",
+							"3": "+375"}
 	country_code_2 = {"1": "by",
 					  "2": "ru"}
 	clear()
 	while True:
 		print(colored("[99] Отмена", "red"))
 		print("")
-		print(colored("[1]", "red"), colored("Беларусь +375", "blue"))
-		print(colored("[2]", "red"), colored("Россия +7", "cyan"))
+		print(colored("[1]", "red"), colored("Россия +7", "cyan"))
+		print(colored("[2]", "red"), colored("Украина +380", "cyan"))
+		print(colored("[3]", "red"), colored("Беларусь +375", "cyan"))
 		print("")
 		ct = input(colored("Выберите страну: ", "green"))
 		if ct == "2":
@@ -245,7 +247,7 @@ def start_input():
 		print(colored("[2]", "red"), colored("Нет", "red"))
 		print()
 		pr = input(colored("Использовать прокси?: ", "green"))
-		if pr in ["1", "2"]:
+		if pr in ["1", "2", "3"]:
 			if pr == "1":
 				pr = country_code_2[ct]
 			else:
