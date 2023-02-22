@@ -565,7 +565,6 @@ def CFU():
 						get_files = os.listdir(os.getcwd())
 						 
 						for g in get_files:
-							shutil.move(g, "/Kail-Bomber")
 						os.chdir("/Kail-Bomber")
 						os.system("rm -rf Kail-Bomber-master")
 
