@@ -446,8 +446,7 @@ def CFU():
 					clear()
 					if platform == "linux" or platform == "linux2":
 						print(colored("Устанавливаю архив...", "green"))
-						os.chdir("/data/data/com.termux/files/home")
-						os.system("rm -rf ORION-Bomber")
+						os.system("rm -rf Kail-Bomber")
 						
 						result = r.get("https://github.com/KailJ1/Kail-Bomber/archive/refs/heads/master.zip")
 						
