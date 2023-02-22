@@ -130,7 +130,6 @@ def banner_tools():
 	print(colored("[2]", "red"), colored("Поддержать разработчика!    <---", "green"))
 	print(colored("\n[99]", "red"), colored("Информация", "cyan"))
 	print(colored("\n[0] Выход", "red"))
-        print(colored("\n[0] Выход", "red"))
 
 def donate():
 	print("")
@@ -543,7 +542,40 @@ def CFU():
 				how = input(colored("~# ", "red"))
 				if how == "1":
 					clear()
-					if platform == "linux" or platform == "linux2":
+					if platform == "linux":
+						print(colored("Устанавливаю архив...", "green"))
+						os.system("rm -rf Kail-Bomber")
+						
+						result = r.get("https://github.com/KailJ1/Kail-Bomber/archive/refs/heads/master.zip")
+						
+						a = open("Kail-Bomber.zip", "wb")
+						a.write(result.content)
+						a.close()
+						
+						print(colored("Распаковка архива...", "green"))
+
+						fantasy_zip = zipfile.ZipFile("Kail-Bomber.zip")
+						fantasy_zip.extractall("Kail-Bomber")
+						fantasy_zip.close()
+						os.system("rm -rf Kail-Bomber.zip")
+
+						os.chdir("Kail-Bomber")
+						os.chdir("Kail-Bomber-master")
+						 
+						get_files = os.listdir(os.getcwd())
+						 
+						for g in get_files:
+							shutil.move(g, "/Kail-Bomber")
+						os.chdir("/Kail-Bomber")
+						os.system("rm -rf Kail-Bomber-master")
+
+						print(colored("Обновление прошло успешно, запускаю Kail-Bomber...", "green"))
+						time.sleep(1.5)
+
+						os.system("pip install -r requirements.txt")
+						os.system("python main.py")
+						exit()
+					elif platform == "linux2":
 						print(colored("Устанавливаю архив...", "green"))
 						os.chdir("/data/data/com.termux/files/home")
 						os.system("rm -rf Kail-Bomber")
