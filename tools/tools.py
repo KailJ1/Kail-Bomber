@@ -205,8 +205,9 @@ def start_input():
 	country_code = {"1": "+7",
 					"2": "+380",
 							"3": "+375"}
-	country_code_2 = {"1": "by",
-					  "2": "ru"}
+	country_code_2 = {"1": "ru",
+					  "2": "by"
+							"3": "ua"}
 	clear()
 	while True:
 		print(colored("[99] Отмена", "red"))
@@ -216,9 +217,11 @@ def start_input():
 		print(colored("[3]", "red"), colored("Беларусь +375", "cyan"))
 		print("")
 		ct = input(colored("Выберите страну: ", "green"))
-		if ct == "2":
+		if ct == "1":
 			break
-		elif ct == "1":
+		elif ct == "2":
+			break
+		elif ct == "3":
 			break
 		elif ct == "99":
 			return 0, 0, 0
