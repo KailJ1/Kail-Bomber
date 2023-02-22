@@ -29,6 +29,9 @@ ___
   + `cd Kail-Bomber`
   + `pip install -r requirements.txt`
   + `python main.py`
++ #### **Перезапуск (Linux)**
+  + `cd Kail-Bomber`
+  + `python main.py`
 ___
 + #### **Windows 10+**
   + `Требуется 64 битная система`
@@ -45,4 +48,3 @@ ___
   + `Перейти в директорию с файлами бомбера`
   + **`python main.py`**
 ___
-<3
